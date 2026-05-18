@@ -1,0 +1,8 @@
+:root {
+  --spacing: clamp(1.125rem, 2.25cqi + 0.563rem, 2.25rem); /* 18px, 36px */
+}
+
+body {
+  padding: var(--spacing);
+  font: 1em / 1.4 sans-serif;
+}
