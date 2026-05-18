@@ -1,0 +1,106 @@
+{
+  "homelab": [
+    {
+      "name": "Unifi Network",
+      "abbr": "UN",
+      "href": "https://10.0.1.1/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/ubiquiti-unifi.svg"
+    },
+    {
+      "name": "Home Assistant",
+      "abbr": "HA",
+      "href": "https://homeassistant.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/home-assistant.svg"
+    },
+    {
+      "name": "Affine",
+      "abbr": "AF",
+      "href": "https://affine.danu.foo/workspace/2aed8d09-a006-4700-b58a-f0e499f31635/all",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/affine.svg"
+    },
+    {
+      "name": "Immich",
+      "abbr": "IM",
+      "href": "https://immich.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/immich.svg"
+    },
+    {
+      "name": "Komodo",
+      "abbr": "KO",
+      "href": "https://komodo.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/komodo.svg"
+    },
+    {
+      "name": "Linkwarden",
+      "abbr": "LW",
+      "href": "https://linkwarden.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/linkwarden.svg"
+    },
+    {
+      "name": "Metube",
+      "abbr": "MT",
+      "href": "https://metube.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/metube.svg"
+    },
+    {
+      "name": "Navidrome",
+      "abbr": "MU",
+      "href": "https://music.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/navidrome.svg"
+    },
+    {
+      "name": "Pangolin",
+      "abbr": "PA",
+      "href": "https://pangolin.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/pangolin.svg"
+    },
+    {
+      "name": "Pi-hole",
+      "abbr": "PH",
+      "href": "https://10.0.1.202/admin",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/pi-hole.svg"
+    },
+    {
+      "name": "Pingvin",
+      "abbr": "PV",
+      "href": "https://share.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/pingvin-share.svg"
+    },
+    {
+      "name": "Plex",
+      "abbr": "PX",
+      "href": "https://plex.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/plex.svg"
+    },
+    {
+      "name": "Raspberry Pi Connect",
+      "abbr": "RPC",
+      "href": "https://connect.raspberrypi.com/devices/c20c0cb1-8eb9-4020-922a-7431156c1d55/screen-sharing-session",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/raspberry-pi.svg"
+    },
+    {
+      "name": "Radarr",
+      "abbr": "RR",
+      "href": "https://radarr.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/radarr.svg"
+    },
+    {
+      "name": "Sonarr",
+      "abbr": "SR",
+      "href": "https://sonarr.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/sonarr.svg"
+    },
+    {
+      "name": "Syncthing",
+      "abbr": "ST",
+      "href": "https://syncthing.danu.foo/",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/syncthing.svg"
+    },
+    {
+      "name": "Synology",
+      "abbr": "SY",
+      "href": "https://synology.danu.foo",
+      "icon": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/synology.svg"
+    }
+  ]
+}
