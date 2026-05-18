@@ -1,0 +1,25 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0 calc(var(--spacing) * 0.5);
+
+  text-align: center;
+
+  dt {
+    grid-row: 1;
+    font-size: 0.6em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    grid-row: 2;
+    font-size: 0.8em;
+    font-weight: 700;
+
+    span {
+      display: block;
+      font-size: 0.75em;
+      font-weight: 400;
+    }
+  }
+}
