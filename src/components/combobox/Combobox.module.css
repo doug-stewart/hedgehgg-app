@@ -1,0 +1,35 @@
+.box {
+  anchor-scope: --combobox;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  anchor-name: --combobox;
+  width: 100%;
+}
+
+.list {
+  display: block;
+  inset: auto;
+  margin: 0;
+  position: absolute;
+  left: anchor(left);
+  top: anchor(bottom);
+  position-anchor: --combobox;
+  width: anchor-size(width);
+  min-width: 0;
+}
+
+.option {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: lightgray;
+}
