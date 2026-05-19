@@ -12,11 +12,7 @@ export const Weather = () => {
       ) : forecast ? (
         <>
           <svg height={64} role="presentation" viewBox="0 0 64 64" width={64}>
-            <use
-              height={64}
-              href={`#${forecast.weather.icon || "day"}`}
-              width={64}
-            />
+            <use href={`#${forecast.weather.icon || "day"}`} />
           </svg>
           <p data-code={forecast.weather.code}>
             {forecast.weather.explanation}
