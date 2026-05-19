@@ -16,7 +16,7 @@ export const processAirQualityData = (responses: WeatherApiResponse) => {
     pm10: Math.round(current?.variables(1)?.value() || 0),
     pm25: Math.round(current?.variables(2)?.value() || 0),
     uvIndex: {
-      value: current?.variables(0)?.value() ?? 0,
+      value: Math.round(current?.variables(0)?.value() ?? 0),
       explanation: interpretUvIndex(current?.variables(0)?.value() ?? 0),
     },
   };
