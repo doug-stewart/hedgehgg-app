@@ -11,6 +11,9 @@ export const processForecastData = (responses: WeatherApiResponse) => {
     );
   }
 
+  const code = current?.variables(6)?.value() || 0;
+  const isDay = Boolean(current?.variables(3)?.value());
+
   const data = {
     windspeed: Math.round(current?.variables(0)?.value() || 0),
     temperature: {
@@ -18,12 +21,9 @@ export const processForecastData = (responses: WeatherApiResponse) => {
       feelsLike: Math.round(current?.variables(5)?.value() || 0),
     },
     precipitation: Math.round(current?.variables(2)?.value() || 0),
-    isDay: Boolean(current?.variables(3)?.value()),
+    isDay: isDay,
     humidity: Math.round(current?.variables(4)?.value() || 0),
-    weather: {
-      code: current?.variables(6)?.value() || 0,
-      explanation: interpretWeatherCode(current?.variables(6)?.value() || 0),
-    },
+    weather: { code, ...interpretWeatherCode(code, isDay) },
     cloudCover: Math.round(current?.variables(7)?.value() || 0),
   };
 

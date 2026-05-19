@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import WeatherSprite from "./assets/images/weather-sprite-animated.svg?react";
 import { Hotkeys } from "./components/hotkeys/Hotkeys";
 import { Services } from "./components/services/Services";
 import { Shows } from "./components/shows/Shows";
@@ -10,15 +11,18 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <h1>Homepa.gg</h1>
-      <Weather />
-      <Search />
-      <Services />
-      <Shows />
-      <Bookmarks />
-      <Hotkeys />
-    </QueryClientProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <h1>Homepa.gg</h1>
+        <Weather />
+        <Search />
+        <Services />
+        <Shows />
+        <Bookmarks />
+        <Hotkeys />
+      </QueryClientProvider>
+      <WeatherSprite />
+    </>
   );
 }
 

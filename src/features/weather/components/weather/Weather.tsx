@@ -11,11 +11,21 @@ export const Weather = () => {
         <p>Loading&hellip;</p>
       ) : forecast ? (
         <>
-          <p data-code={forecast.weather.code}>{forecast.weather.explanation}</p>
+          <svg height={64} role="presentation" viewBox="0 0 64 64" width={64}>
+            <use
+              height={64}
+              href={`#${forecast.weather.icon || "day"}`}
+              width={64}
+            />
+          </svg>
+          <p data-code={forecast.weather.code}>
+            {forecast.weather.explanation}
+          </p>
           <dl className={styles.stats}>
             <dt>Temp</dt>
             <dd>
-              {forecast.temperature.actual}° F<span>({forecast.temperature.feelsLike}° F)</span>
+              {forecast.temperature.actual}° F
+              <span>({forecast.temperature.feelsLike}° F)</span>
             </dd>
             <dt>AQI</dt>
             <dd>

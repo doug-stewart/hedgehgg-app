@@ -1,61 +1,63 @@
 // Docs: https://open-meteo.com/en/docs#weather_variable_documentation
-export const interpretWeatherCode = (code: number) => {
+export const interpretWeatherCode = (code: number, isDay: boolean) => {
+  const base = isDay ? "day" : "night";
+
   switch (code) {
     case 0:
-      return "Clear skies";
+      return { icon: base, explanation: "Clear skies" };
     case 1:
-      return "Mostly clear skies";
+      return { icon: `cloudy-${base}-1`, explanation: "Mostly clear skies" };
     case 2:
-      return "Partially cloudy";
+      return { icon: `cloudy-${base}-2`, explanation: "Partially cloudy" };
     case 3:
-      return "Cloudy";
+      return { icon: `cloudy-${base}-3`, explanation: "Cloudy" };
     case 45:
     case 48:
-      return "Foggy";
+      return { icon: "cloudy", explanation: "Foggy" };
     case 51:
-      return "Light drizzle";
+      return { icon: "rainy-4", explanation: "Light drizzle" };
     case 53:
-      return "Moderate drizzle";
+      return { icon: "rainy-5", explanation: "Moderate drizzle" };
     case 55:
-      return "Heavy drizzle";
+      return { icon: "rainy-6", explanation: "Heavy drizzle" };
     case 56:
-      return "Freezing light drizzle";
+      return { icon: "rainy-4", explanation: "Freezing light drizzle" };
     case 57:
-      return "Freezing steady drizzle";
+      return { icon: "rainy-6", explanation: "Freezing steady drizzle" };
     case 61:
-      return "Light raining";
+      return { icon: "rainy-4", explanation: "Light raining" };
     case 63:
-      return "Moderate raining";
+      return { icon: "rainy-5", explanation: "Moderate raining" };
     case 65:
-      return "Heavy raining";
+      return { icon: "rainy-6", explanation: "Heavy raining" };
     case 66:
-      return "Freezing light rain";
+      return { icon: "rainy-4", explanation: "Freezing light rain" };
     case 67:
-      return "Freezing steady rain";
+      return { icon: "rainy-6", explanation: "Freezing steady rain" };
     case 71:
-      return "Light snow";
+      return { icon: "snowy-4", explanation: "Light snow" };
     case 73:
-      return "Moderate snow";
+      return { icon: "snowy-5", explanation: "Moderate snow" };
     case 75:
     case 77:
-      return "Heavy snow";
+      return { icon: "snowy-6", explanation: "Heavy snow" };
     case 80:
-      return "Light rain showers";
+      return { icon: "rainy-4", explanation: "Light rain showers" };
     case 81:
-      return "Moderate rain showers";
+      return { icon: "rainy-5", explanation: "Moderate rain showers" };
     case 82:
-      return "Heavy rain showers";
+      return { icon: "rainy-6", explanation: "Heavy rain showers" };
     case 85:
-      return "Light snow flurries";
+      return { icon: "snowy-4", explanation: "Light snow flurries" };
     case 86:
-      return "Steady snow flurries";
+      return { icon: "snowy-6", explanation: "Steady snow flurries" };
     case 95:
-      return "Thunderstorm";
+      return { icon: "thunder", explanation: "Thunderstorm" };
     case 96:
-      return "Thunderstorm and light hail";
+      return { icon: "thunder", explanation: "Thunderstorm and light hail" };
     case 99:
-      return "Thunderstorm and heavy hail";
+      return { icon: "thunder", explanation: "Thunderstorm and heavy hail" };
     default:
-      return "The end times are here";
+      return { icon: "day", explanation: "The end times are here" };
   }
 };
