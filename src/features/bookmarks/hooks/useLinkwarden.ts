@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { BACKEND_API } from "../config";
+import { BACKEND_API } from "../../../config";
 import type { Bookmarks } from "../types";
 
 export const useLinkwarden = () => {
