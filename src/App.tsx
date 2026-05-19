@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Hotkeys } from "./components/hotkeys/Hotkeys";
 import { Services } from "./components/services/Services";
 import { Shows } from "./components/shows/Shows";
 import { Bookmarks } from "./features/bookmarks/components/bookmarks/Bookmarks";
@@ -16,6 +17,7 @@ function App() {
       <Services />
       <Shows />
       <Bookmarks />
+      <Hotkeys />
     </QueryClientProvider>
   );
 }
