@@ -1,8 +1,3 @@
-export const locationParms = {
-  latitude: 37.7749,
-  longitude: -122.4194,
-};
-
 export const airQualityParams = {
   current: ["uv_index_clear_sky", "pm10", "pm2_5", "us_aqi", "european_aqi"],
 };
