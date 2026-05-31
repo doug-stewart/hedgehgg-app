@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@better-auth/oauth-provider": "^1.6.11",
+    "@better-auth/passkey": "^1.6.11",
     "@tanstack/pacer": "^0.21.0",
     "@tanstack/react-hotkeys": "^0.10.0",
     "@tanstack/react-query": "^5.100.9",
@@ -38,5 +39,6 @@
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.11",
     "vite-plugin-svgr": "^5.2.0"
-  }
+  },
+  "packageManager": "pnpm@11.5.0+sha512.dbfcc4f81cf48597afd4bc391ffdf12c11f1a9fb83a395bfa6b0a2d9cc2fd8ffebafdb1ccbd529632153f793904c2615b7f09fe1a345473fd1c35845172a8eb1"
 }
