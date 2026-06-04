@@ -20,6 +20,5 @@ export const forecastParams = {
   precipitation_unit: "inch",
 };
 
-export const airQualityUrl =
-  "https://air-quality-api.open-meteo.com/v1/air-quality";
+export const airQualityUrl = "https://air-quality-api.open-meteo.com/v1/air-quality";
 export const forecastUrl = "https://api.open-meteo.com/v1/forecast";

@@ -1,6 +1,4 @@
-export type Session = NonNullable<
-  ReturnType<typeof authClient.useSession>["data"]
->;
+export type Session = NonNullable<ReturnType<typeof authClient.useSession>["data"]>;
 
 export type BaseSessionResult = {
   isPending: boolean;

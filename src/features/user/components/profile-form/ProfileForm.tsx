@@ -40,18 +40,14 @@ export const ProfileForm = ({ profile }: { profile: User }) => {
           <span>Token</span>
           <input {...register("linkwarden_token")} />
           {errors.linkwarden_token && (
-            <span className={styles.error}>
-              {errors.linkwarden_token.message}
-            </span>
+            <span className={styles.error}>{errors.linkwarden_token.message}</span>
           )}
         </label>
         <label className={styles.field}>
           <span>URL</span>
           <input {...register("linkwarden_url")} />
           {errors.linkwarden_url && (
-            <span className={styles.error}>
-              {errors.linkwarden_url.message}
-            </span>
+            <span className={styles.error}>{errors.linkwarden_url.message}</span>
           )}
         </label>
       </fieldset>
@@ -61,17 +57,13 @@ export const ProfileForm = ({ profile }: { profile: User }) => {
           <span>API Key</span>
           <input {...register("sonarr_api_key")} />
           {errors.sonarr_api_key && (
-            <span className={styles.error}>
-              {errors.sonarr_api_key.message}
-            </span>
+            <span className={styles.error}>{errors.sonarr_api_key.message}</span>
           )}
         </label>
         <label className={styles.field}>
           <span>URL</span>
           <input {...register("sonarr_url")} />
-          {errors.sonarr_url && (
-            <span className={styles.error}>{errors.sonarr_url.message}</span>
-          )}
+          {errors.sonarr_url && <span className={styles.error}>{errors.sonarr_url.message}</span>}
         </label>
       </fieldset>
       <fieldset className={styles.fieldset}>
@@ -80,18 +72,14 @@ export const ProfileForm = ({ profile }: { profile: User }) => {
           <span>Latitude</span>
           <input {...register("geolocation_latitude")} />
           {errors.geolocation_latitude && (
-            <span className={styles.error}>
-              {errors.geolocation_latitude.message}
-            </span>
+            <span className={styles.error}>{errors.geolocation_latitude.message}</span>
           )}
         </label>
         <label className={styles.field}>
           <span>Longitude</span>
           <input {...register("geolocation_longitude")} />
           {errors.geolocation_longitude && (
-            <span className={styles.error}>
-              {errors.geolocation_longitude.message}
-            </span>
+            <span className={styles.error}>{errors.geolocation_longitude.message}</span>
           )}
         </label>
       </fieldset>

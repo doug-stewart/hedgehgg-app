@@ -1,12 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeatherApi } from "openmeteo";
 import { useProfile } from "../../user/hooks/useProfile";
-import {
-  airQualityParams,
-  airQualityUrl,
-  forecastParams,
-  forecastUrl,
-} from "../config";
+import { airQualityParams, airQualityUrl, forecastParams, forecastUrl } from "../config";
 import { processAirQualityData } from "../helpers/processAirQualityData";
 import { processForecastData } from "../helpers/processForecastData";
 

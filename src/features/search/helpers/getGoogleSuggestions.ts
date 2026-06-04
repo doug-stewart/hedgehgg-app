@@ -1,10 +1,7 @@
 import { debounce } from "@tanstack/pacer";
 import { BACKEND_API } from "../../../config";
 
-const performSearch = async (
-  query: string,
-  setterFn: (suggestions: Array<string>) => void,
-) => {
+const performSearch = async (query: string, setterFn: (suggestions: Array<string>) => void) => {
   const trimmed = query.trim();
 
   if (!trimmed || trimmed.length < 3) {

@@ -14,14 +14,11 @@ export const Weather = () => {
           <svg height={64} role="presentation" viewBox="0 0 64 64" width={64}>
             <use href={`#${forecast.weather.icon || "day"}`} />
           </svg>
-          <p data-code={forecast.weather.code}>
-            {forecast.weather.explanation}
-          </p>
+          <p data-code={forecast.weather.code}>{forecast.weather.explanation}</p>
           <dl className={styles.stats}>
             <dt>Temp</dt>
             <dd>
-              {forecast.temperature.actual}° F
-              <span>({forecast.temperature.feelsLike}° F)</span>
+              {forecast.temperature.actual}° F<span>({forecast.temperature.feelsLike}° F)</span>
             </dd>
             <dt>AQI</dt>
             <dd>

@@ -6,9 +6,7 @@ export const processAirQualityData = (responses: WeatherApiResponse) => {
   const current = response.current();
 
   if (!current) {
-    console.error(
-      "Error: Unable to retrieve current air quality data from response",
-    );
+    console.error("Error: Unable to retrieve current air quality data from response");
   }
 
   const data = {
