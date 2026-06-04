@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 .tanstack
+.zed
 
 # Editor directories and files
 .vscode/*
