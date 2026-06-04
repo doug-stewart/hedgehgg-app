@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchWeatherApi } from "openmeteo";
-import { useGeoLocation } from "../../../hooks/useGeoLocation";
+import { useProfile } from "../../user/hooks/useProfile";
 import {
   airQualityParams,
   airQualityUrl,
@@ -11,7 +11,13 @@ import { processAirQualityData } from "../helpers/processAirQualityData";
 import { processForecastData } from "../helpers/processForecastData";
 
 export const useWeather = () => {
-  const geolocation = useGeoLocation();
+  const { profile } = useProfile();
+
+  const geolocation = {
+    latitude: profile?.geolocation_latitude,
+    longitude: profile?.geolocation_longitude,
+  };
+
   const { data, isLoading } = useQuery({
     queryKey: ["weather"],
     queryFn: async () => {
@@ -29,7 +35,7 @@ export const useWeather = () => {
 
       return { ...forecast, ...air };
     },
-    enabled: geolocation !== null,
+    enabled: !!profile,
     staleTime: Infinity,
   });
 
