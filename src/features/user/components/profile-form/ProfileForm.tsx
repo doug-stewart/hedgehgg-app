@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import type * as z from "zod";
 import { profileSchema } from "../../helpers/profileSchema";
+import { useUpdateProfile } from "../../hooks/useUpdateProfile";
 import type { User } from "../../types";
 import styles from "./ProfileForm.module.css";
 
@@ -30,7 +31,23 @@ export const ProfileForm = ({ profile }: { profile: User }) => {
     defaultValues: initial,
   });
 
-  const onSubmit: SubmitHandler<ProfileInputs> = (data) => console.log(data);
+  const updateProfile = useUpdateProfile();
+
+  const onSubmit: SubmitHandler<ProfileInputs> = async (data) => {
+    if (!profile) return;
+
+    const newProfile = {
+      id: profile.id,
+      geolocation_latitude: data.geolocation_latitude ?? "",
+      geolocation_longitude: data.geolocation_longitude ?? "",
+      linkwarden_token: data.linkwarden_token ?? "",
+      linkwarden_url: data.linkwarden_url ?? "",
+      sonarr_api_key: data.sonarr_api_key ?? "",
+      sonarr_url: data.sonarr_url ?? "",
+    };
+
+    await updateProfile.mutateAsync(newProfile);
+  };
 
   return profile === null ? null : (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
