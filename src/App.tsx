@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router";
 import WeatherSprite from "./assets/images/weather-sprite-animated.svg?react";
 import { AuthLayout } from "./features/auth/components/auth-layout/AuthLayout";
-import { User } from "./features/auth/components/user/User";
+import { UserHeader } from "./features/auth/components/user-header/UserHeader";
 import { Home } from "./routes/Home";
 import { Nest } from "./routes/Nest";
 import { Profile } from "./routes/Profile";
@@ -14,7 +14,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <User />
+          <UserHeader />
           <Routes>
             <Route element={<Home />} index />
             <Route element={<AuthLayout />}>
