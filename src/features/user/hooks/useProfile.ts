@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { BACKEND_API } from "../../../config";
 import { useSession } from "../../auth/hooks/useSession";
+import { getProfile } from "../api/getProfile";
 import type { User } from "../types";
 
 type UserStore = {
@@ -17,13 +17,7 @@ export const useProfile = (): UserStore => {
 
   const userQuery = useQuery({
     queryKey: ["user", user.id],
-    queryFn: async () => {
-      const response = await fetch(`${BACKEND_API}/profile/${user.id}`, {
-        credentials: "include",
-      });
-      const data = await response.json();
-      return data as User;
-    },
+    queryFn: async () => getProfile(user.id),
     staleTime: Infinity,
     enabled: isLoggedIn,
   });
