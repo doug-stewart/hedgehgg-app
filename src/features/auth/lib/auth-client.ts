@@ -5,7 +5,5 @@ import { BACKEND_API } from "../../../config";
 export const authClient = createAuthClient({
   baseURL: BACKEND_API,
   plugins: [passkeyClient()],
-  fetchOptions: {
-    credentials: "include",
-  },
+  fetchOptions: { credentials: "include" },
 });

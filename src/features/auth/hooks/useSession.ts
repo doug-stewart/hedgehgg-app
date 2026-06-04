@@ -1,7 +1,8 @@
 import type { ErrorContext } from "better-auth/client";
 import { authClient } from "../lib/auth-client";
+import type { SessionResult } from "../types";
 
-export const useSessions = () => {
+export const useSession = (): SessionResult => {
   const { data: session, isPending, refetch } = authClient.useSession();
 
   const login = async () => {
@@ -44,5 +45,27 @@ export const useSessions = () => {
     await authClient.signOut();
   };
 
-  return { session, login, logout, signup, isPending };
+  const isLoggedIn = !!session?.user && !!session?.session;
+
+  if (isLoggedIn) {
+    return {
+      isLoggedIn: true,
+      session: session,
+      isPending,
+      refetch,
+      login,
+      signup,
+      logout,
+    };
+  }
+
+  return {
+    isLoggedIn: false,
+    session: null,
+    isPending,
+    refetch,
+    login,
+    signup,
+    logout,
+  };
 };
