@@ -8,7 +8,9 @@ export const useSonarr = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["user", session.session.id, "sonarr"],
     queryFn: async () => {
-      const response = await fetch(`${BACKEND_API}/sonarr/upcoming`);
+      const response = await fetch(`${BACKEND_API}/sonarr/upcoming`, {
+        credentials: "include",
+      });
       const data = await response.json();
       return data as Episodes;
     },
