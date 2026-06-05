@@ -5,16 +5,18 @@ export const Weather = () => {
   const { forecast, isLoading } = useWeather();
 
   return (
-    <section>
-      <h2>Weather</h2>
+    <section className={styles.weather} data-code={forecast?.weather.code}>
+      <h2 className={styles.title}>Weather</h2>
       {isLoading ? (
-        <p>Loading&hellip;</p>
+        <p className={styles.explanation}>&hellip;</p>
       ) : forecast ? (
         <>
-          <svg height={64} role="presentation" viewBox="0 0 64 64" width={64}>
-            <use href={`#${forecast.weather.icon || "day"}`} />
-          </svg>
-          <p data-code={forecast.weather.code}>{forecast.weather.explanation}</p>
+          <img
+            alt=""
+            className={styles.icon}
+            src={`https://cdn.meteocons.com/3.0.0-next.10/svg/fill/${forecast.weather.icon}.svg`}
+          />
+          <p className={styles.explanation}>{forecast.weather.explanation}</p>
           <dl className={styles.stats}>
             <dt>Temp</dt>
             <dd>
@@ -38,7 +40,7 @@ export const Weather = () => {
           </dl>
         </>
       ) : (
-        <p>Uh&hellip;</p>
+        <p>&hellip;Uh&hellip;</p>
       )}
     </section>
   );
