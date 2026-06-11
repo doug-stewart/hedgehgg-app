@@ -34,7 +34,7 @@ export const ProfileForm = ({ profile }: { profile: User }) => {
   const updateProfile = useUpdateProfile();
 
   const onSubmit: SubmitHandler<ProfileInputs> = async (data) => {
-    if (!profile) return;
+    if (!profile || profile.id === null) return;
 
     const newProfile = {
       id: profile.id,
