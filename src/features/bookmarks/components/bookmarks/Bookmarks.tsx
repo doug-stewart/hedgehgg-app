@@ -10,15 +10,15 @@ export const Bookmarks = () => {
       <h2>Bookmarks</h2>
       {isLoading ? (
         <p>Loading...</p>
-      ) : (
+      ) : Array.isArray(bookmarks) ? (
         <ul className={styles.bookmarks}>
           {bookmarks
-            ?.sort((a, b) => (a.name === "Unorganized" ? -1 : a.name.localeCompare(b.name)))
+            .sort((a, b) => (a.name === "Unorganized" ? -1 : a.name.localeCompare(b.name)))
             .map((collection) => (
               <Collection collection={collection} key={collection.id} />
             ))}
         </ul>
-      )}
+      ) : null}
     </section>
   );
 };
