@@ -4,8 +4,6 @@ import { useProfile } from "../features/user/hooks/useProfile";
 export const Profile = () => {
   const { profile, isSuccess } = useProfile();
 
-  console.log({ profile });
-
   return isSuccess ? (
     <>
       <title>Profile • Hedge.gg</title>
