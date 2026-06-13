@@ -6,11 +6,12 @@ import type { Bookmarks } from "../types";
 type LinkwardenStore = {
   bookmarks: Bookmarks | [];
   isLoading: boolean;
+  isSuccess: boolean;
 };
 
 export const useLinkwarden = (): LinkwardenStore => {
   const { session, isLoggedIn } = useSession();
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isSuccess } = useQuery({
     queryKey: ["user", session.session.id, "bookmarks"],
     queryFn: async () => {
       const response = await fetch(`${BACKEND_API}/linkwarden/all`, {
@@ -23,8 +24,22 @@ export const useLinkwarden = (): LinkwardenStore => {
     enabled: isLoggedIn,
   });
 
+  const bookmarks =
+    data instanceof Error
+      ? []
+      : Array.isArray(data)
+        ? data.sort((a, b) => {
+            if (a.name === "Unorganized") return -1;
+            if (b.name === "Unorganized") return 1;
+            return a.name.localeCompare(b.name);
+          })
+        : [];
+
+  console.log(bookmarks.map((b) => b.name));
+
   return {
-    bookmarks: data instanceof Error ? [] : (data ?? []),
+    bookmarks,
     isLoading,
+    isSuccess,
   };
 };
