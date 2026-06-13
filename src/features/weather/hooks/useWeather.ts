@@ -30,7 +30,7 @@ export const useWeather = () => {
 
       return { ...forecast, ...air };
     },
-    enabled: !!profile,
+    enabled: Boolean(geolocation.latitude && geolocation.longitude),
     staleTime: Infinity,
   });
 
