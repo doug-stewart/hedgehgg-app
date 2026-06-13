@@ -1,11 +1,14 @@
 import { debounce } from "@tanstack/pacer";
 import { BACKEND_API } from "../../../config";
 
-const performSearch = async (query: string, setterFn: (suggestions: Array<string>) => void) => {
+const performSearch = async (
+  query: string,
+  setterFn: (suggestions: Array<string>) => void,
+  limit?: number,
+) => {
   const trimmed = query.trim();
 
   if (!trimmed || trimmed.length < 3) {
-    console.log("Query too short, skipping search");
     setterFn([]);
     return;
   }
@@ -16,7 +19,7 @@ const performSearch = async (query: string, setterFn: (suggestions: Array<string
     );
 
     const data = await response.json();
-    setterFn(data as Array<string>);
+    setterFn(data.slice(0, limit ?? 5) as Array<string>);
   } catch (error) {
     console.error("Error fetching suggestions", error);
     setterFn([]);
