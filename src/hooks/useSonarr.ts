@@ -17,5 +17,5 @@ export const useSonarr = () => {
     staleTime: Infinity,
     enabled: isLoggedIn,
   });
-  return { upcoming: data, isLoading };
+  return { upcoming: Array.isArray(data) ? data : [], isLoading };
 };
