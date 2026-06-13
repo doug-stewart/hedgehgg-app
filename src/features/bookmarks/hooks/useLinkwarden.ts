@@ -28,11 +28,16 @@ export const useLinkwarden = (): LinkwardenStore => {
     data instanceof Error
       ? []
       : Array.isArray(data)
-        ? data.sort((a, b) => {
-            if (a.name === "Unorganized") return -1;
-            if (b.name === "Unorganized") return 1;
-            return a.name.localeCompare(b.name);
-          })
+        ? data
+            .sort((a, b) => {
+              if (a.name === "Unorganized") return -1;
+              if (b.name === "Unorganized") return 1;
+              return a.name.localeCompare(b.name);
+            })
+            .map((collection) => {
+              collection.links.sort((a, b) => a.name.localeCompare(b.name));
+              return collection;
+            })
         : [];
 
   return {
