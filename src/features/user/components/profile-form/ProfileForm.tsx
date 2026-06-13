@@ -23,6 +23,7 @@ export const ProfileForm = ({ profile }: { profile: User }) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ProfileInputs>({
     mode: "onBlur",
@@ -47,6 +48,19 @@ export const ProfileForm = ({ profile }: { profile: User }) => {
     };
 
     await updateProfile.mutateAsync(newProfile);
+  };
+
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      let latitude = String(position.coords.latitude);
+      latitude = latitude.slice(0, latitude.indexOf(".") + 8);
+
+      let longitude = String(position.coords.longitude);
+      longitude = longitude.slice(0, longitude.indexOf(".") + 8);
+
+      setValue("geolocation_latitude", latitude);
+      setValue("geolocation_longitude", longitude);
+    });
   };
 
   return profile === null ? null : (
@@ -99,6 +113,10 @@ export const ProfileForm = ({ profile }: { profile: User }) => {
             <span className={styles.error}>{errors.geolocation_longitude.message}</span>
           )}
         </label>
+
+        <button onClick={getLocation} type="button">
+          Get Current Location
+        </button>
       </fieldset>
       <button type="submit">Update</button>
     </form>
