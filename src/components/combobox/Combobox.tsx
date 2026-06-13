@@ -273,9 +273,11 @@ export const Combobox = ({
           ))}
         </div>
       )}
-      <button className={styles.clear} onClick={handleClear} title="clear" type="button">
-        <span role="presentation">&times;</span>
-      </button>
+      {inputValue !== "" && (
+        <button className={styles.clear} onClick={handleClear} title="clear" type="button">
+          <span role="presentation">&times;</span>
+        </button>
+      )}
     </div>
   );
 };
