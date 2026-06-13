@@ -23,7 +23,7 @@ export const Combobox = ({
   id,
   className,
 }: ComboboxProps) => {
-  const { register, watch, setValue } = useFormContext();
+  const { register, watch, setValue, resetField } = useFormContext();
   const inputValue = watch(name);
   const { ref: rhfRef, onChange: onRHFChange, ...rhfProps } = register(name);
 
@@ -178,6 +178,12 @@ export const Combobox = ({
     }
   };
 
+  const handleClear = () => {
+    handleSelect("");
+    resetField(name);
+    onChange?.("");
+  };
+
   // Handles input value change reactions
   useEffect(() => {
     if (!inputValue || inputValue === "") return;
@@ -267,6 +273,9 @@ export const Combobox = ({
           ))}
         </div>
       )}
+      <button className={styles.clear} onClick={handleClear} title="clear" type="button">
+        <span role="presentation">&times;</span>
+      </button>
     </div>
   );
 };
