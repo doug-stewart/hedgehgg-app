@@ -35,8 +35,6 @@ export const useLinkwarden = (): LinkwardenStore => {
           })
         : [];
 
-  console.log(bookmarks.map((b) => b.name));
-
   return {
     bookmarks,
     isLoading,
