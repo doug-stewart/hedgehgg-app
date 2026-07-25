@@ -1,3 +1,4 @@
+import { apiFetch } from "@/api/helpers/apiFetch";
 import { authClient } from "@/features/auth/lib/auth-client";
 import type { ThemeValue } from "../types";
 
@@ -9,7 +10,7 @@ export const setTheme = async (theme: ThemeValue): Promise<ThemeValue> => {
       throw new Error("User not authenticated");
     }
 
-    const response = await fetch("/profile/theme", {
+    const response = await apiFetch("/profile/theme", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
