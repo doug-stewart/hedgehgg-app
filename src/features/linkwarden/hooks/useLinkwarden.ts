@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import { apiFetch } from "@/api/helpers/apiFetch";
 import { useSession } from "@/features/auth/hooks/useSession";
 import { useProfile } from "@/features/user/hooks/useProfile";
 import type { LinkwardenCollection } from "../types";
@@ -19,9 +20,7 @@ export const useLinkwarden = (): LinkwardenStore => {
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ["user", session?.id, "linkwarden", "links"],
     queryFn: async () => {
-      const response = await fetch(`/api/linkwarden/all`, {
-        credentials: "include",
-      });
+      const response = await apiFetch("/linkwarden/all");
       const data = await response.json();
       return data as Error | Array<LinkwardenCollection>;
     },

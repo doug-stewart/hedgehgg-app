@@ -1,3 +1,4 @@
+import { apiFetch } from "@/api/helpers/apiFetch";
 import { authClient } from "@/features/auth/lib/auth-client";
 import type { User } from "../types";
 
@@ -9,9 +10,8 @@ export const updateProfile = async (profile: NonNullable<User>): Promise<User> =
       throw new Error("User not authenticated");
     }
 
-    const response = await fetch(`/api/profile`, {
+    const response = await apiFetch("/profile", {
       method: "PUT",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

@@ -9,9 +9,8 @@ export const setTheme = async (theme: ThemeValue): Promise<ThemeValue> => {
       throw new Error("User not authenticated");
     }
 
-    const response = await fetch(`/api/profile/theme`, {
+    const response = await fetch("/profile/theme", {
       method: "PATCH",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

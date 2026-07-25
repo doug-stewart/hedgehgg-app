@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { apiFetch } from "@/api/helpers/apiFetch";
 import { useSession } from "@/features/auth/hooks/useSession";
 import type { LinkwardenLink } from "@/features/linkwarden/types";
 import { useProfile } from "@/features/user/hooks/useProfile";
@@ -10,9 +11,7 @@ export const useLinkwardenSearch = (query: string): { results: Array<LinkwardenL
   const searchQuery = useQuery({
     queryKey: ["user", session?.id, "linkwarden", "search", query],
     queryFn: async () => {
-      const response = await fetch(`/api/linkwarden/search?q=${query}`, {
-        credentials: "include",
-      });
+      const response = await apiFetch(`/linkwarden/search?q=${query}`);
       const data = await response.json();
       return data as Array<LinkwardenLink>;
     },

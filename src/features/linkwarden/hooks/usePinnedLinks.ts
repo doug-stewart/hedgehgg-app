@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { apiFetch } from "@/api/helpers/apiFetch";
 import { useSession } from "@/features/auth/hooks/useSession";
 import { useProfile } from "@/features/user/hooks/useProfile";
 import type { LinkwardenLink } from "../types";
@@ -11,9 +12,7 @@ export const usePinnedLinks = () => {
   const query = useQuery({
     queryKey: ["user", session?.id, "pinned"],
     queryFn: async () => {
-      const response = await fetch(`/api/linkwarden/pinned`, {
-        credentials: "include",
-      });
+      const response = await apiFetch("/linkwarden/pinned");
       const data = await response.json();
       return data as Error | Array<LinkwardenLink>;
     },
