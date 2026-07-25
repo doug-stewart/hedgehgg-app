@@ -46,7 +46,7 @@ body {
   flex-direction: column;
   padding: var(--spacing);
   font:
-    300 1em / 1.4 var(--font-noto-sans),
+    300 1em / 1.4 "Noto Sans",
     sans-serif;
   color: var(--color-on-primary);
   background: var(--color-bg-primary);
