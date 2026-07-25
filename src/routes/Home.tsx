@@ -1,21 +1,18 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
-import { useSession } from "@/features/auth/hooks/useSession";
+import Hedgehgg from "@/assets/images/hedgehgg.svg?react";
+import { SessionForm } from "@/features/auth/components/session-form/SessionForm";
+import { SessionWatcher } from "@/features/auth/components/session-watcher/SessionWatcher";
 
 export default function Home() {
-  const { isLoggedIn, isPending } = useSession();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (isLoggedIn && !isPending) {
-      navigate("/nest");
-    }
-  }, [isLoggedIn, isPending, navigate]);
-
   return (
     <>
       <title>Hedge.gg</title>
-      <h1>Home</h1>
+      <header>
+        <Hedgehgg role="presentation" />
+        <h1>Hedge.hgg</h1>
+        <p>Build your nest!</p>
+      </header>
+      <SessionForm />
+      <SessionWatcher />
     </>
   );
 }
