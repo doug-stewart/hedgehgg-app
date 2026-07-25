@@ -7,7 +7,6 @@ import type { LinkwardenLink } from "../types";
 export const usePinnedLinks = () => {
   const { session, isLoggedIn } = useSession();
   const { profile } = useProfile();
-  const hasLinkwarden = Object.hasOwn(profile || {}, "linkwarden_token");
 
   const query = useQuery({
     queryKey: ["user", session?.id, "pinned"],
@@ -17,11 +16,11 @@ export const usePinnedLinks = () => {
       return data as Error | Array<LinkwardenLink>;
     },
     staleTime: Infinity,
-    enabled: isLoggedIn && hasLinkwarden,
+    enabled: isLoggedIn && !!profile?.linkwarden_token,
   });
 
-  const pinned = (query.data instanceof Error || query.data === undefined ? [] : query.data).sort(
-    (a, b) => a.name.localeCompare(b.name),
+  const pinned = (Array.isArray(query.data) ? query.data : []).sort((a, b) =>
+    a.name.localeCompare(b.name),
   );
 
   return {
