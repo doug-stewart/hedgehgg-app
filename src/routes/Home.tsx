@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSession } from "@/features/auth/hooks/useSession";
 
-export const Home = () => {
+export default function Home() {
   const { isLoggedIn, isPending } = useSession();
   const navigate = useNavigate();
 
@@ -18,4 +18,4 @@ export const Home = () => {
       <h1>Home</h1>
     </>
   );
-};
+}

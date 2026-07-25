@@ -5,10 +5,10 @@ import { SearchForm } from "@/features/search/components/search-form/SearchForm"
 import { Weather } from "@/features/weather/components/weather/Weather";
 import styles from "./Nest.module.css";
 
-export const Nest = () => {
+export default function Nest() {
   return (
     <>
-      <title>Your Nest • Hedge.gg</title>
+      <title>Your Nest ⟡ Hedge.gg</title>
       <AppHeader />
       <div className={styles.top}>
         <Weather />
@@ -22,4 +22,4 @@ export const Nest = () => {
       </div>
     </>
   );
-};
+}
