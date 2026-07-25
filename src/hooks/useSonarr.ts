@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/api/helpers/apiFetch";
-import { BACKEND_API } from "@/config";
 import { useSession } from "@/features/auth/hooks/useSession";
 import type { Episodes } from "@/types";
 
