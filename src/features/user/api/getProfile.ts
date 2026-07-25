@@ -1,5 +1,4 @@
 import { apiFetch } from "@/api/helpers/apiFetch";
-import { BACKEND_API } from "@/config";
 import type { User } from "../types";
 
 export const getProfile = async () => {
