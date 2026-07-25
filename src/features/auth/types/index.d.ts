@@ -1,10 +1,12 @@
-export type Session = NonNullable<ReturnType<typeof authClient.useSession>["data"]>;
+import type { SessionResponse } from "better-auth/client";
+
+export type Session = NonNullable<SessionResponse["session"]>;
 
 export type BaseSessionResult = {
   isPending: boolean;
   refetch: () => void;
-  login: () => Promise<ErrorContext | undefined>;
-  signup: (email: string) => Promise<ErrorContext | undefined>;
+  login: () => Promise<void>;
+  signup: (email: string) => Promise<void>;
   logout: () => Promise<void>;
 };
 

@@ -1,71 +1,80 @@
-import type { ErrorContext } from "better-auth/client";
+"use client";
+
+import { useCallback } from "react";
+import { useNavigate } from "react-router";
+import { useNotificationsActions } from "@/features/notifications/store/notifications.store";
 import { authClient } from "../lib/auth-client";
 import type { SessionResult } from "../types";
 
 export const useSession = (): SessionResult => {
-  const { data: session, isPending, refetch } = authClient.useSession();
+  const navigate = useNavigate();
+  const { data, isPending, refetch } = authClient.useSession();
+  const { addNotification } = useNotificationsActions();
 
-  const login = async () => {
-    let result: ErrorContext | undefined;
+  const signup = useCallback(
+    async (email: string) => {
+      await authClient.passkey.addPasskey({
+        context: email,
+        fetchOptions: {
+          async onSuccess() {
+            await refetch();
+          },
+          onError(context) {
+            addNotification({
+              type: "error",
+              message: context.error.message ?? "Could not create your account",
+            });
+          },
+        },
+      });
+    },
+    [refetch, addNotification],
+  );
 
-    await authClient.signIn.passkey({
-      fetchOptions: {
-        async onSuccess() {
-          await refetch();
-        },
-        onError(context) {
-          result = context;
-        },
-      },
+  const login = useCallback(async () => {
+    const result = await authClient.signIn.passkey({
+      extensions: { credProps: true },
     });
 
-    return result;
-  };
+    if (result.error === null) {
+      navigate("/nest");
+      return;
+    }
 
-  const signup = async (email: string) => {
-    let result: ErrorContext | undefined;
+    const message =
+      "code" in result.error && result.error.code === "PASSKEY_NOT_FOUND"
+        ? "No account found for this passkey"
+        : (result.error.message ?? "Could not log you in");
 
-    await authClient.passkey.addPasskey({
-      name: "Primary Passkey",
-      context: email,
-      fetchOptions: {
-        async onSuccess() {
-          await refetch();
-        },
-        onError(context) {
-          result = context;
-        },
-      },
-    });
-
-    return result;
-  };
+    addNotification({ type: "error", message });
+  }, [navigate, addNotification]);
 
   const logout = async () => {
     await authClient.signOut();
+    navigate("/");
   };
 
-  const isLoggedIn = !!session?.user && !!session?.session;
+  const isLoggedIn = !!data?.session;
+
+  const sharedReturnProps = {
+    isPending,
+    refetch,
+    login,
+    signup,
+    logout,
+  };
 
   if (isLoggedIn) {
     return {
       isLoggedIn: true,
-      session: session,
-      isPending,
-      refetch,
-      login,
-      signup,
-      logout,
+      session: data.session,
+      ...sharedReturnProps,
     };
   }
 
   return {
     isLoggedIn: false,
     session: null,
-    isPending,
-    refetch,
-    login,
-    signup,
-    logout,
+    ...sharedReturnProps,
   };
 };

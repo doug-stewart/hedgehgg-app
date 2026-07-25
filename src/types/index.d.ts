@@ -1,31 +1,4 @@
-export type Link = {
-  id: number;
-  name: string;
-  url: string;
-  description: string;
-  createdAt: string;
-};
-
-export type Collection = {
-  id: number;
-  name: string;
-  description: string;
-  createdAt: string;
-  links: Array<Link>;
-};
-
-export type Bookmarks = Array<Collection>;
-
-export type Service = {
-  name: string;
-  abbr: string;
-  href: string;
-  icon: string;
-};
-
-export type Services = { [key: string]: Array<Service> };
-
-export type Episodie = {
+export type Episode = {
   airingAt: string;
   episodeNumber: number;
   id: number;
@@ -34,4 +7,13 @@ export type Episodie = {
   title: string;
 };
 
-export type Episodes = Array<Episodie>;
+export type Episodes = Array<Episode>;
+
+export type InlineSVG = React.FunctionComponent<
+  React.SVGProps<SVGSVGElement> & {
+    title?: string;
+    titleId?: string;
+    desc?: string;
+    descId?: string;
+  }
+>;

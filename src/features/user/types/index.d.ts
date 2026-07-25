@@ -38,4 +38,16 @@ type WithoutGeolocation = {
 
 type Geolocation = WithGeolocation | WithoutGeolocation;
 
-export type User = (BaseUser & Linkwarden & Sonarr & Geolocation) | null;
+export type ThemeValue = "light" | "dark" | "system" | "geolocation";
+
+type WithTheme = {
+  theme: ThemeValue;
+};
+
+type WithoutTheme = {
+  theme: null;
+};
+
+type Theme = WithTheme | WithoutTheme;
+
+export type User = (BaseUser & Linkwarden & Sonarr & Geolocation & Theme) | null;

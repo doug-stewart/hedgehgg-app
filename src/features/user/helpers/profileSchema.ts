@@ -13,6 +13,7 @@ export const profileSchema = z
     linkwarden_url: z.url().or(z.literal("")).optional(),
     sonarr_api_key: z.string().optional(),
     sonarr_url: z.url().or(z.literal("")).optional(),
+    theme: z.enum(["light", "dark", "system", "geolocation"]).or(z.literal("")).optional(),
   })
   .refine((data) => isMissingItsPair(data.geolocation_latitude, data.geolocation_longitude), {
     error,

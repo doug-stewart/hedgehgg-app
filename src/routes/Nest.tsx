@@ -1,20 +1,25 @@
-import { Hotkeys } from "../components/hotkeys/Hotkeys";
-import { Services } from "../components/services/Services";
-import { Shows } from "../components/shows/Shows";
-import { Bookmarks } from "../features/bookmarks/components/bookmarks/Bookmarks";
-import { Search } from "../features/search/components/search/Search";
-import { Weather } from "../features/weather/components/weather/Weather";
+import { AppHeader } from "@/components/app-header/AppHeader";
+import { EpisodeCalendar } from "@/components/episode-calendar/EpisodeCalendar";
+import { PinnedLinks } from "@/features/linkwarden/components/pinned-links/PinnedLinks";
+import { SearchForm } from "@/features/search/components/search-form/SearchForm";
+import { Weather } from "@/features/weather/components/weather/Weather";
+import styles from "./Nest.module.css";
 
 export const Nest = () => {
   return (
     <>
       <title>Your Nest • Hedge.gg</title>
-      <Weather />
-      <Search />
-      <Services />
-      <Shows />
-      <Bookmarks />
-      <Hotkeys />
+      <AppHeader />
+      <div className={styles.top}>
+        <Weather />
+      </div>
+      <div className={styles.mid}>
+        <SearchForm />
+        <PinnedLinks />
+      </div>
+      <div className={styles.bottom}>
+        <EpisodeCalendar />
+      </div>
     </>
   );
 };
