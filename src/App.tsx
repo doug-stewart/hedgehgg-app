@@ -1,15 +1,13 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
+import Providers from "@/components/providers/Providers";
 
 const Home = lazy(() => import("./routes/Home"));
 const Nest = lazy(() => import("./routes/Nest"));
 
-const queryClient = new QueryClient();
-
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <Providers>
       <BrowserRouter>
         <Suspense fallback={<div>Loading page...</div>}>
           <Routes>
@@ -18,7 +16,7 @@ function App() {
           </Routes>
         </Suspense>
       </BrowserRouter>
-    </QueryClientProvider>
+    </Providers>
   );
 }
 
