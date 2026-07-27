@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { apiFetch } from "@/api/helpers/apiFetch";
 import { useSession } from "@/features/auth/hooks/useSession";
 import { useProfile } from "@/features/user/hooks/useProfile";
-import type { Episodes } from "@/types";
+import type { Episodes } from "../types";
 
 export const useSonarr = () => {
   const { session, isLoggedIn } = useSession();

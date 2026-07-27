@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import type { Episode } from "@/types";
+import type { Episode } from "../../types";
 import styles from "./EpisodeCalendarItem.module.css";
 
 type EpisodeCalendarItemProps = {
