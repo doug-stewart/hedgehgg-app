@@ -16,7 +16,9 @@ export const useTheme = () => {
 
   const isLoaded = isSuccess && (theme !== "geolocation" || forecast !== undefined);
 
-  const setMutation = useMutation({ mutationFn: setTheme });
+  const setMutation = useMutation({
+    mutationFn: setTheme,
+  });
 
   return { theme, display, isLoaded, setTheme: setMutation };
 };
