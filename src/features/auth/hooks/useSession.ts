@@ -51,6 +51,7 @@ export const useSession = (): SessionResult => {
 
   const logout = async () => {
     await authClient.signOut();
+    await refetch();
     navigate("/");
   };
 
