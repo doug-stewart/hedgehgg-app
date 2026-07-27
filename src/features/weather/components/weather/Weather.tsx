@@ -11,9 +11,9 @@ export const Weather = () => {
   const id = useId();
   const { tooltipRef, showTooltip, hideTooltip } = useTooltip();
   const { city } = useGeoLocation();
-  const { forecast, isLoading } = useWeather();
+  const { forecast } = useWeather();
 
-  return (
+  return forecast && city ? (
     <section
       aria-labelledby={`weather-title-${id}`}
       className={styles.weather}
@@ -31,48 +31,38 @@ export const Weather = () => {
         type="button"
       >
         <span className={styles.title} id={`weather-title-${id}`}>
-          Current weather in <strong>{city ?? "Nowhere"}</strong> is:
+          Current weather in <strong>{city}</strong> is:
         </span>
-        {isLoading ? (
-          <span className={styles.explanation}>&hellip;</span>
-        ) : forecast ? (
-          <>
-            <img
-              alt=""
-              className={styles.icon}
-              src={`https://cdn.meteocons.com/3.0.0-next.10/svg/fill/${forecast.weather.icon}.svg`}
-            />
-            <span className={styles.explanation}>
-              {forecast.weather.explanation} and {forecast.temperature.actual}° F{" "}
-              <span>({forecast.temperature.feelsLike}° F)</span>
-            </span>
-          </>
-        ) : (
-          <span>&hellip;Uh&hellip;</span>
-        )}
+        <img
+          alt=""
+          className={styles.icon}
+          src={`https://cdn.meteocons.com/3.0.0-next.10/svg/fill/${forecast.weather.icon}.svg`}
+        />
+        <span className={styles.explanation}>
+          {forecast.weather.explanation} and {forecast.temperature.actual}° F{" "}
+          <span>({forecast.temperature.feelsLike}° F)</span>
+        </span>
       </button>
-      {forecast && (
-        <Tooltip align="bottom" id={`weather-${id}`} ref={tooltipRef}>
-          <dl className={styles.stats}>
-            <dt>AQI</dt>
-            <dd>
-              {forecast.aqi}
-              <span role="presentation">|</span>
-              {forecast.pm25} pm2.5
-              <span role="presentation">|</span>
-              {forecast.pm10} pm10
-            </dd>
-            <dt>Rain</dt>
-            <dd>{forecast.precipitation}%</dd>
-            <dt>Wind</dt>
-            <dd>{forecast.windspeed} mph</dd>
-            <dt>UV Index</dt>
-            <dd>
-              {forecast.uvIndex.value} ({forecast.uvIndex.explanation})
-            </dd>
-          </dl>
-        </Tooltip>
-      )}
+      <Tooltip align="bottom" id={`weather-${id}`} ref={tooltipRef}>
+        <dl className={styles.stats}>
+          <dt>AQI</dt>
+          <dd>
+            {forecast.aqi}
+            <span role="presentation">|</span>
+            {forecast.pm25} pm2.5
+            <span role="presentation">|</span>
+            {forecast.pm10} pm10
+          </dd>
+          <dt>Rain</dt>
+          <dd>{forecast.precipitation}%</dd>
+          <dt>Wind</dt>
+          <dd>{forecast.windspeed} mph</dd>
+          <dt>UV Index</dt>
+          <dd>
+            {forecast.uvIndex.value} ({forecast.uvIndex.explanation})
+          </dd>
+        </dl>
+      </Tooltip>
     </section>
-  );
+  ) : null;
 };
