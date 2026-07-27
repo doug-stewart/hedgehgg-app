@@ -11,7 +11,6 @@ export default function Home() {
         <header className={styles.header}>
           <Hedgehgg role="presentation" />
           <h1>Hedgeh.gg</h1>
-          <p>Build your nest!</p>
         </header>
         <SessionForm />
         <SessionWatcher />

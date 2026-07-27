@@ -1,8 +1,10 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { Button } from "@/components/button/Button";
 import { useFeatureFlags } from "@/hooks/useFeatureFlags";
 import { useSession } from "../../hooks/useSession";
+import styles from "./SessionForm.module.css";
 
 export const SessionForm = () => {
   const { featureFlags } = useFeatureFlags();
@@ -15,25 +17,29 @@ export const SessionForm = () => {
   };
 
   return isLoggedIn ? (
-    <p>Already logged in</p>
+    <div className={styles.wrapper}>
+      <p>Already logged in</p>
+    </div>
   ) : (
-    <div>
-      <button onClick={login} type="button">
-        Login
-      </button>
-      {featureFlags?.ENABLE_REGISTRATION && (
+    <div className={styles.wrapper}>
+      <Button className={styles.login} onClick={login}>
+        Enter Your Nest
+      </Button>
+      {featureFlags?.ENABLE_REGISTRATION === false && (
         <>
-          <p>Or</p>
-          <form onSubmit={handleSubmit(submitForm)}>
+          <p className={styles.divider}>
+            <span>Or</span>
+          </p>
+          <form className={styles.form} onSubmit={handleSubmit(submitForm)}>
             <label>
-              <span>Email</span>
+              <span>Enter your email</span>
               <input
                 autoComplete="email webauthn"
                 type="email"
                 {...register("email", { required: true })}
               />
             </label>
-            <button type="submit">Signup</button>
+            <Button type="submit">Build Your Nest</Button>
           </form>
         </>
       )}

@@ -1,7 +1,7 @@
 .dialog {
   width: calc(100vw - calc(var(--spacing) * 1));
   max-width: 640px;
-  padding: 2.4rem;
+  padding: calc(var(--spacing) * 0.84);
   margin: auto;
 }
 
@@ -9,8 +9,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: calc(var(--spacing) * 0.84);
+  height: calc(var(--spacing) * 0.84);
   padding: 0;
   border-top-left-radius: 0;
   border-bottom-right-radius: 0;
