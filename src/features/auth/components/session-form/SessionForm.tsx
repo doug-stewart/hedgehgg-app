@@ -25,7 +25,7 @@ export const SessionForm = () => {
       <Button className={styles.login} onClick={login}>
         Enter Your Nest
       </Button>
-      {featureFlags?.ENABLE_REGISTRATION === false && (
+      {featureFlags?.ENABLE_REGISTRATION === true && (
         <>
           <p className={styles.divider}>
             <span>Or</span>
